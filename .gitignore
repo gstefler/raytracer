@@ -1,0 +1,11 @@
+.vscode
+# all build directories
+**/build/
+*.o
+*.a
+*.so
+*.dll
+*.exe
+*.out
+*.log
+*.bin
