@@ -127,12 +127,18 @@ __global__ void render(color *fb, int width, int height, int samples, int max_de
 
 int main(void)
 {
+    int dev;
+    checkCudaErrors(cudaGetDevice(&dev));
+    cudaDeviceProp deviceProp;
+    checkCudaErrors(cudaGetDeviceProperties(&deviceProp, dev));
+    std::cout << "Running on GPU: " << deviceProp.name << std::endl;
+
     int nx = 1920;
     int ny = 1080;
     int tx = 8;
     int ty = 8;
-    int samples_per_pixel = 1000;
-    int max_depth = 50;
+    int samples_per_pixel = 500;
+    int max_depth = 10;
 
     int num_pixels = nx * ny;
     size_t fb_size = num_pixels * sizeof(vec3);
