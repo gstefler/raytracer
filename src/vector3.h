@@ -9,17 +9,17 @@ struct vector3
     vector3() : x(0), y(0), z(0) {}
     vector3(const float x, const float y, const float z) : x(x), y(y), z(z) {}
 
-    vector3 operator+(const vector3 &v) const { return {x + v.x, y + v.y, z + v.z}; }
-    vector3 operator-(const vector3 &v) const { return {x - v.x, y - v.y, z - v.z}; }
-    vector3 operator*(const float t) const { return {x * t, y * t, z * t}; }
-    vector3 operator/(const float t) const { return {x / t, y / t, z / t}; }
+    inline vector3 operator+(const vector3 &v) const { return {x + v.x, y + v.y, z + v.z}; }
+    inline vector3 operator-(const vector3 &v) const { return {x - v.x, y - v.y, z - v.z}; }
+    inline vector3 operator*(const float t) const { return {x * t, y * t, z * t}; }
+    inline vector3 operator/(const float t) const { return {x / t, y / t, z / t}; }
 
-    vector3 operator*(const vector3 &v) const { return {x * v.x, y * v.y, z * v.z}; }
+    inline vector3 operator*(const vector3 &v) const { return {x * v.x, y * v.y, z * v.z}; }
 
-    float length() const { return std::sqrt(x * x + y * y + z * z); }
-    float squared_length() const { return x * x + y * y + z * z; }
+    inline float length() const { return std::sqrt(x * x + y * y + z * z); }
+    inline float squared_length() const { return x * x + y * y + z * z; }
 
-    void normalize()
+    inline void normalize()
     {
         const float k = 1.0f / length();
         x *= k;
@@ -27,7 +27,7 @@ struct vector3
         z *= k;
     }
 
-    vector3 normalized() const
+    inline vector3 normalized() const
     {
         const float k = 1.0f / length();
         return {x * k, y * k, z * k};
