@@ -25,7 +25,7 @@ int main()
 {
     const int image_width = 1920;
     const int image_height = 1080;
-    const int max_depth = 50;
+    const int max_depth = 5;
     const int samples_per_pixel = 1000;
 
     scene world(image_width, image_height, max_depth, samples_per_pixel);
@@ -45,7 +45,7 @@ int main()
     world.add(std::make_shared<sphere>(s3));
     world.add(std::make_shared<plane>(p));
 
-    // omp_set_num_threads(12);
+    omp_set_num_threads(12);
     const auto pixels = world.render();
 
     write_image(pixels, image_width, image_height);
